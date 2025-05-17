@@ -1,11 +1,6 @@
-
-
-
-
 import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
-
 
 class AddVietnameseText:
     def add_vietnamese_text(image, text, position, font_size = 24, font_color=(0, 255, 0)):

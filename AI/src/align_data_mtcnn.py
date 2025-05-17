@@ -8,7 +8,7 @@ face_path = "E:\PythonProjectMain\AI\DataSet\FaceData"
 detector = MTCNN()
 
 # Số pixel muốn mở rộng xung quanh khuôn mặt
-MARGIN = 10
+MARGIN = 20
 
 class ailgn_data:
     def __init__(self, id):
@@ -53,7 +53,7 @@ def crop_faces_for_id(id_name: str):
         face = image.crop((x_new, y_new, x2_new, y2_new))
 
         # Resize về 182x182
-        face = face.resize((182, 182))
+        face = face.resize((160, 160))
 
         # Lưu ảnh
         face.save(output_path, format="PNG")

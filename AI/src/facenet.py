@@ -102,11 +102,13 @@ def get_image_paths(facedir):
     return image_paths
 
 def load_model(model, input_map=None):
-    """load mô hình với TF2.x"""
+    """load mô hình"""
+    """mở roọng đường dẫn"""
     model_exp = os.path.expanduser(model)
     if os.path.isfile(model_exp):
         print(f"Model filename: {model_exp}")
-        # Sử dụng API TF2.x để tải model
-        imported = tf.saved_model.load(model_exp)
-        return imported
+        with tf.io.gfile.GFile(model_exp, 'rb') as f:
+            graph_def = tf.compat.v1.GraphDef()
+            graph_def.ParseFromString(f.read())
+            tf.import_graph_def(graph_def, input_map=input_map, name='')
 
