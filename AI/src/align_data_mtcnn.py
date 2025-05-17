@@ -10,6 +10,10 @@ detector = MTCNN()
 # Số pixel muốn mở rộng xung quanh khuôn mặt
 MARGIN = 10
 
+class ailgn_data:
+    def __init__(self, id):
+        crop_faces_for_id(id)
+
 def crop_faces_for_id(id_name: str):
     raw_dir = os.path.join(face_path, "raw", id_name)
     processed_dir = os.path.join(face_path, "processed", id_name)
