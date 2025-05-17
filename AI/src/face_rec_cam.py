@@ -3,11 +3,11 @@ from collections import Counter
 import tensorflow as tf
 import imutils
 import os
-import sys
+
 import pickle
 import numpy as np
 import cv2
-import collections
+
 import time
 from mtcnn import MTCNN
 from AI.src import facenet
@@ -19,6 +19,7 @@ INPUT_IMAGE_SIZE = 182
 BASE_PATH = "E:/PythonProjectMain/AI"
 CLASSIFIER_PATH = os.path.join(BASE_PATH, 'Models', 'classifier.pkl')
 FACENET_MODEL_PATH = os.path.join(BASE_PATH, 'Models', '20180402-114759.pb')
+MIN_FACE_HEIGHT_RATIO = 0.25
 
 class FaceNetModel:
     def __init__(self):
@@ -94,9 +95,42 @@ class FaceRecognitionCam:
         with self.model.graph.as_default():
             with self.model.sess.as_default():
                 # Phát hiện khuôn mặt
-                detected_face = self.detector.detect_faces(frame)
+                small_frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
+                detected_face = self.detector.detect_faces(small_frame)
                 face_found = detected_face.shape[0]
                 if face_found > 1:
                     frame = AddVietnameseText.add_vietnamese_text(frame, "Có nhiều hơn 1 khuôn mặt", (10, 30))
+                elif face_found == 0:
+                    frame = AddVietnameseText.add_vietnamese_text(frame, "Không phát hiện khuôn mặt", (10, 30))
+                else:
+                    x, y, width, height = detected_face['box']
+                    x, y = max(0, x), max(0, y)
+
+                    #bỏ qua khuôn mặt quá nhỏ
+                    face_height_ratio = height / small_frame.shape[0]
+                    if face_height_ratio > MIN_FACE_HEIGHT_RATIO:
+                        #cắt khuôn mặt và resize
+                        cropped = small_frame[y : y + height, x : x + width]
+                        scaled = cv2.resize(cropped, (INPUT_IMAGE_SIZE, INPUT_IMAGE_SIZE))
+                        chuan_hoa = facenet.chuan_hoa_anh(scaled)
+                        reshaped = chuan_hoa.reshape(-1, INPUT_IMAGE_SIZE, INPUT_IMAGE_SIZE, 3)
+
+                        #Tính vector đặc trưng
+                        feed_dict = {self.model.images_placeholder: reshaped, self.model.phase_train_placeholder: False}
+                        emb_arr = self.model.sess.run(self.model.embeddings, feed_dict=feed_dict)
+
+                        #Nhận diện
+                        predictions = self.model.model.predict_proba(emb_arr)
+                        best_class_indices = np.argmax(predictions, axis=1)
+                        best_class_probabilities = predictions[np.arange(len(best_class_indices)), best_class_indices]
+                        best_name = self.model.class_names[best_class_indices[0]]
+                        print("ID: {}, Độ chính xác: {}".format(best_name, best_class_probabilities))
+
+                        if best_class_probabilities > 0.8:
+                            cv2.rectangle(frame, (x, y), (x + width, y + height), (0, 255, 0), 2)
+                            cv2.putText()
+
+
+
 
 
