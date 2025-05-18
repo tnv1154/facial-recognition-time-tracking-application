@@ -8,7 +8,7 @@ from mtcnn import MTCNN
 from AI.src.align_data_mtcnn import ailgn_data
 from AI.src.classifier import Classifier
 from AI.src.facenet import delete_classifier_model
-from View.GiaoDienThongKe.LayDuLieu import employees
+
 
 Base_path = "E:/PythonProjectMain/AI"
 print(f"Thư mục gốc : {Base_path}")
