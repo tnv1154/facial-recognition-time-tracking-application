@@ -1,0 +1,28 @@
+[
+    {
+        "id_employee": 1,
+        "name": "Nguyễn Việt Thắng",
+        "date_of_birth": "2004-05-11",
+        "phonenumber": "0900000001",
+        "email": "user1@example.com",
+        "address": "Dia chi 1",
+        "department": "Nhân sự",
+        "gender": "Nam",
+        "position": "Trưởng nhóm",
+        "status": "Inactive",
+        "cccd": "012345670001"
+    },
+    {
+        "id_employee": 2,
+        "name": "Nguyen Van A1",
+        "date_of_birth": "1997-12-14",
+        "phonenumber": "0900000001",
+        "email": "user1@example.com",
+        "address": "Dia chi 1",
+        "department": "Nhân sự",
+        "gender": "Nam",
+        "position": "Trưởng nhóm",
+        "status": "Inactive",
+        "cccd": "012345670001"
+    }
+]

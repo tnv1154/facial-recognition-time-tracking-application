@@ -1,20 +1,14 @@
 
-import tensorflow as tf
-import imutils
 import os
-import sys
 import cv2
 import time
-import subprocess
-import numpy as np
-from PIL import Image, ImageDraw, ImageFont
-from tensorflow.python.distribute.device_util import current
 
-from AI.src import facenet
 from AI.src.add_vietnamese_text import AddVietnameseText
 from mtcnn import MTCNN
 from AI.src.align_data_mtcnn import ailgn_data
 from AI.src.classifier import Classifier
+from AI.src.facenet import delete_classifier_model
+from View.GiaoDienThongKe.LayDuLieu import employees
 
 Base_path = "E:/PythonProjectMain/AI"
 print(f"Thư mục gốc : {Base_path}")
@@ -130,6 +124,19 @@ def main(id_employee):
     Classifier(PROCESSED_FOLDER, MODEL_PATH, OUTPUT_CLASSIFIER)
 
     print("Thêm mới nhân viên hoàn tất")
+
+
+def face_re_train(id):
+    """Huấn luyện lại bộ phân loại khi nhân viên bị xóa"""
+    employees_folder = os.path.join(PROCESSED_FOLDER, str(id))
+    if os.path.exists(employees_folder):
+        os.remove(employees_folder)
+        print(f"Đã xóa file: {employees_folder}")
+    else:
+        print(f"File không tồn tại: {employees_folder}")
+
+    delete_classifier_model()
+    Classifier(PROCESSED_FOLDER, MODEL_PATH, OUTPUT_CLASSIFIER)
 
 if __name__ == "__main__":
     FaceAdd(str(input("Nhập id nhân viên: ")))

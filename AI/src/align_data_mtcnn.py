@@ -8,7 +8,7 @@ face_path = "E:\PythonProjectMain\AI\DataSet\FaceData"
 detector = MTCNN()
 
 # Số pixel muốn mở rộng xung quanh khuôn mặt
-MARGIN = 20
+MARGIN = 30
 
 class ailgn_data:
     def __init__(self, id):

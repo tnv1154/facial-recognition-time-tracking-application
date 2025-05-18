@@ -1,0 +1,93 @@
+[
+    {
+        "id_employee": 1,
+        "name": "Nguyễn Văn B",
+        "date_of_birth": "1990-1-15",
+        "phonenumber": "0912345678",
+        "email": "a.nguyen@example.com",
+        "address": "12 Lý Thường Kiệt",
+        "department": "Nhân sự ",
+        "gender": "Nam",
+        "position": "Nhân viên",
+        "status": "Đã nghỉ",
+        "cccd": "123456789"
+    },
+    {
+        "id_employee": 2,
+        "name": "Lê Thị B",
+        "date_of_birth": "1992-05-22",
+        "phonenumber": "0923456789",
+        "email": "b.le@example.com",
+        "address": "34 Nguyễn Trãi",
+        "department": "Tài chính",
+        "gender": "Nữ",
+        "position": "Kế toán",
+        "status": "Đang làm",
+        "cccd": "123456782"
+    },
+    {
+        "id_employee": 3,
+        "name": "Trần Văn C",
+        "date_of_birth": "1988-03-10",
+        "phonenumber": "0934567890",
+        "email": "c.tran@example.com",
+        "address": "56 Hai Bà Trưng",
+        "department": "Quản lý",
+        "gender": "Nam",
+        "position": "Nhân viên",
+        "status": "Đã nghỉ",
+        "cccd": "123456"
+    },
+    {
+        "id_employee": 4,
+        "name": "Phạm Thị D",
+        "date_of_birth": "1995-07-30",
+        "phonenumber": "0945678901",
+        "email": "d.pham@example.com",
+        "address": "78 Trần Hưng Đạo",
+        "department": "Kinh doanh",
+        "gender": "Nữ",
+        "position": "Giám đốc",
+        "status": "Đang làm",
+        "cccd": "565651616651"
+    },
+    {
+        "id_employee": 5,
+        "name": "Hoàng Văn E",
+        "date_of_birth": "1985-11-05",
+        "phonenumber": "0956789012",
+        "email": "e.hoang@example.com",
+        "address": "90 Nguyễn Huệ",
+        "department": "Nhân sự",
+        "gender": "Nam",
+        "position": "Nhân viên",
+        "status": "Đang làm",
+        "cccd": "1253556565565"
+    },
+    {
+        "id_employee": 6,
+        "name": "Lê Thị B",
+        "date_of_birth": "1992-05-22",
+        "phonenumber": "0923456789",
+        "email": "b.le@example.com",
+        "address": "34 Nguyễn Trãi",
+        "department": "Tài chính",
+        "gender": "Nữ",
+        "position": "Kế toán",
+        "status": "Đang làm",
+        "cccd": "123456782"
+    },
+    {
+        "id_employee": 7,
+        "name": "Nguyễn Văn B",
+        "date_of_birth": "1990-1-15",
+        "phonenumber": "0912345678",
+        "email": "a.nguyen@example.com",
+        "address": "12 Lý Thường Kiệt",
+        "department": "Nhân sự ",
+        "gender": "Nam",
+        "position": "Nhân viên",
+        "status": "Đã nghỉ",
+        "cccd": "123456789"
+    }
+]

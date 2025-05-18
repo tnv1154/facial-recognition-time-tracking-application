@@ -8,7 +8,7 @@ from sklearn.svm import SVC
 
 
 image_size = 160
-batch_size = 10
+batch_size = 50
 
 class Classifier:
     def __init__(self, face_processed_path, model_path, output_path):
@@ -60,6 +60,7 @@ def main(face_processed_path, model_path, output_path):
             with open(output_path, 'wb') as outfile:
                 pickle.dump((classifier_model, class_name), outfile)
             print("Lưu mô hình phân loại thành công tại : " + output_path)
+
 
 if __name__ == "__main__":
     face_processed_path = "E:/PythonProjectMain/AI/DataSet/FaceData/processed"

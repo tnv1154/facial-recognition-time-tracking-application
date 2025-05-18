@@ -112,3 +112,11 @@ def load_model(model, input_map=None):
             graph_def.ParseFromString(f.read())
             tf.import_graph_def(graph_def, input_map=input_map, name='')
 
+def delete_classifier_model():
+    """Xóa mô hình classifier"""
+    file_path = "E:/PythonProjectMain/AI/Models/classifier.pkl"
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        print(f"Đã xóa file: {file_path}")
+    else:
+        print(f"File không tồn tại: {file_path}")

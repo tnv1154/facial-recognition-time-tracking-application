@@ -97,7 +97,7 @@ class FaceRecognitionCam:
             return frame, None
 
         # Resize frame
-        frame = imutils.resize(frame, width=500)  # Giá trị trung gian giữa 400 và 600
+        frame = imutils.resize(frame, width=600)  # Giá trị trung gian giữa 400 và 600
 
         # Convert BGR to RGB for MTCNN
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -146,8 +146,8 @@ class FaceRecognitionCam:
 
                 if best_class_probabilities > 0.8:
                     cv2.rectangle(frame, (x, y), (x + width, y + height), (0, 255, 0), 2)
-                    frame = AddVietnameseText.add_vietnamese_text(frame, best_name, (x, y + height + 30), 24, (0, 255, 0))
-                    frame = AddVietnameseText.add_vietnamese_text(frame, str(round(best_class_probabilities[0], 3)), (x, y + height + 60), 24, (0, 255, 0))
+                    frame = AddVietnameseText.add_vietnamese_text(frame, best_name, (x, y + height + 10), 24, (0, 255, 0))
+                    frame = AddVietnameseText.add_vietnamese_text(frame, str(round(best_class_probabilities[0], 3)), (x, y + height + 30), 24, (0, 255, 0))
                     self.person_detected[best_name] += 1
                     self.id_arr.append(int(best_name))
                     detected_id = int(best_name)
@@ -161,6 +161,7 @@ class FaceRecognitionCam:
                     self.person_detected["UNKNOWN"] += 1
                     self.id_arr.append("UNKNOWN")
                     detected_id = "UNKNOWN"
+        #frame = imutils.resize(frame, width=1280)
         return frame, detected_id
 
     def get_most_common_id(self):
@@ -189,6 +190,7 @@ def main():
             break
 
         processed_frame, current_id = face_rec_cam.process_frame(frame)
+        processed_frame = imutils.resize(processed_frame, width=640)
         cv2.imshow("Face Recognition", processed_frame)
         
         # Nhấn 'q' để thoát
