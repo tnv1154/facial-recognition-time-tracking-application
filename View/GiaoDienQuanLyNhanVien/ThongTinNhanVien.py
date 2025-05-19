@@ -2,7 +2,7 @@ import customtkinter as ctk
 from datetime import datetime
 from View.ManagerView.GiaoDienTaiKhoan import Tao_giao_dien_tai_khoan
 from AI.src.face_add_cam import FaceAdd, face_re_train
-
+from Service.Salary_Service import SalaryService
 
 class EmployeeInfoFrame(ctk.CTkFrame):
     def __init__(self, parent, db_manager):
@@ -245,6 +245,8 @@ class EmployeeInfoFrame(ctk.CTkFrame):
         if employee:
             confirm = self.show_confirm_dialog("Xác nhận", f"Bạn có chắc chắn muốn xóa nhân viên {employee['name']}?")
             if confirm:
+                salarySer = SalaryService()
+                salarySer.delete_salary_by_employee(self.current_employee_id)
                 if self.db_manager.delete_employee(self.current_employee_id):
                     self.show_message("Thành công", f"Đã xóa nhân viên {employee['name']}!")
                     face_re_train(self.current_employee_id) #Xóa bộ phân loại và huấn luyện lại

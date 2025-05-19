@@ -57,7 +57,7 @@ class Tao_giao_dien_tai_khoan:
         # Nút Chỉnh sửa thông tin đặt dưới ảnh đại diện
         edit_btn = ctk.CTkButton(
             left_col,
-            text="Chỉnh sửa thông tin",
+            text="Ảnh đại diện",
             fg_color=self.accent_color,
             hover_color=self.main_color,
             command=lambda: self.edit_employee_info(employee)
