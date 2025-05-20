@@ -13,6 +13,7 @@ class Speech:
         self.xoay_trai = pygame.mixer.Sound(os.path.join(Voice_path, "Vui_long_xoay_trai.wav"))
         self.khong_ngua = pygame.mixer.Sound(os.path.join(Voice_path, "Vui_long_khong_ngua_mat.wav"))
         self.khong_cui = pygame.mixer.Sound(os.path.join(Voice_path, "Vui_long_khong_cui_mat.wav"))
+        self.trong_khung = pygame.mixer.Sound(os.path.join(Voice_path, "Vui_long_dat_khuon_mat_trong_khung.wav"))
 
     def Nhin_thang_start(self):
         self.nhin_thang.play()
@@ -35,6 +36,11 @@ class Speech:
         time.sleep(0.0001)
 
 
+    def Trong_khung_start(self):
+        self.trong_khung.play()
+        time.sleep(0.0001)
+
+
 def main():
     speech = Speech()
     last_play_time = time.time()
@@ -42,7 +48,7 @@ def main():
         print(i)
         current_time = time.time()
         if current_time - last_play_time >= 5:
-            speech.Nhin_thang_start()
+            speech.Trong_khung_start()
             last_play_time = current_time
         #speech.Nhin_thang_start()
 """    speech.Nhin_thang_start()

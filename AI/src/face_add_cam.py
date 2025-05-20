@@ -70,7 +70,7 @@ def main(id_employee):
             continue
         #frame = imutils.resize(frame, width=IMAGE_WIDTH)
         frame = cv2.resize(frame, (IMAGE_WIDTH, IMAGE_HEIGHT))
-        small_frame = cv2.resize(frame, (0, 0), fx=0.4, fy=0.4)
+        small_frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
         save_frame = frame.copy()
         #phát hiện khuôn mặt
         face_found = detector.detect_faces(small_frame)
