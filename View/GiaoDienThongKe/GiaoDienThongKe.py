@@ -3,7 +3,7 @@ from datetime import datetime
 import locale
 import pandas as pd
 from tkinter import messagebox, filedialog
-from View.GiaoDienThongKe.ThongKeChamCong import AttendancePage
+from View.GiaoDienThongKe.ThongKeDiemDanh import AttendancePage
 from View.GiaoDienThongKe.BaoCaoChamCong import TimesheetPage
 from View.GiaoDienThongKe.BaoCaoLuong import SalaryPage
 from View.GiaoDienThongKe.LayDuLieu import employees, timekeepings, salarys
@@ -42,13 +42,9 @@ class Giao_Dien_Thong_Ke(ctk.CTk):
         # Khởi tạo các trang
         self.attendance_page = AttendancePage(
             self.tab_view.tab("Thống kê điểm danh"),
-            employees=employees,
-            timekeepings=timekeepings
         )
         self.timesheet_page = TimesheetPage(
             self.tab_view.tab("Báo cáo chấm công"),
-            employees=employees,
-            timekeepings=timekeepings
         )
         self.salary_page = SalaryPage(
             self.tab_view.tab("Báo cáo lương"),

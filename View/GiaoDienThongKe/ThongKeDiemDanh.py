@@ -3,10 +3,22 @@ from datetime import datetime
 import calendar
 import locale
 from tkinter import ttk
-
+from datetime import datetime, timedelta
+from Service.Employee_Service import EmployeeService
+from Service.Timekeeping_Service import TimekeepingService
+from Service.Salary_Service import SalaryService
+from Models.Employee import Employee
+from Models.Timekeeping import Timekeeping
+from Models.Salary import Salary
 
 class AttendancePage:
-    def __init__(self, parent, employees, timekeepings):
+    def __init__(self, parent):
+        emp = EmployeeService().get_all_employees()
+        employees = [[str(value) for value in d.values()] for d in emp]
+
+        timek = TimekeepingService().get_all_timekeeping()
+        timekeepings = [[str(value) for value in d.values()] for d in timek]
+
         self.parent = parent
         self.employees = employees
         self.timekeepings = timekeepings

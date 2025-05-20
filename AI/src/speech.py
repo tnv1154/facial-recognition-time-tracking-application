@@ -2,7 +2,6 @@ import pygame
 import os
 import time
 
-
 Base_path = "E:/PythonProjectMain/"
 Voice_path = os.path.join(Base_path,"AI/Voice/")
 

@@ -33,6 +33,61 @@ class FaceOrientation:
         goc_trai = self.calculate_Angle(right_eye, left_eye, nose)
         goc_phai = self.calculate_Angle(left_eye, right_eye, nose)
 
+        hieu = abs(goc_trai - goc_phai)
+
+        print(f"Goc trai: {goc_trai}")
+        print(f"Goc phai: {goc_phai}")
+        print(f"Hieu: {hieu}")
+        print()
+
+
+        if int(hieu) < 10:
+            if int(goc_trai) in range(40, 53) and int(goc_phai) in range(40, 53):
+                face_orientation = "Front"
+            else:
+                if int(goc_trai) <= 40 and int(goc_phai) <= 40:
+                    face_orientation = "Ngua"
+                else:
+                    face_orientation = "cui"
+        elif int(hieu) >= 60:
+            if goc_phai < goc_trai:
+                face_orientation = "Ngua left"
+            else:
+                face_orientation = "Ngua Right"
+        else:
+            if goc_phai < goc_trai:
+                face_orientation = "Left"
+            else:
+                face_orientation = "Right"
+        print(face_orientation)
+        return face_orientation
+
+
+"""
+        if int(hieu) <= 10:
+            if int(goc_trai) in range(40, 53) and int(goc_phai) in range(40, 53):
+                face_orientation = "Front"
+            else:
+                if int(goc_trai) <= 40 and int(goc_phai) <= 40:
+                    face_orientation = "Ngua"
+                else:
+                    face_orientation = "cui"
+        else:
+            if goc_phai < goc_trai:
+                if int(hieu) >= 70:
+                    face_orientation = "Ngua left"
+                else:
+                    face_orientation = "Left"
+            else:
+                if int(hieu) >= 70:
+                    face_orientation = "Ngua Right"
+                else:
+                    face_orientation = "Right"
+        print(face_orientation)
+        return face_orientation
+
+"""
+"""
         if int(goc_phai) in range(40, 60) and int(goc_trai) in range(40, 60):
             face_orientation = "Front"
         else:
@@ -41,7 +96,7 @@ class FaceOrientation:
             else:
                 face_orientation = "Right"
 
-        return face_orientation
+"""
 
 
 def main():
@@ -51,7 +106,7 @@ def main():
         ret, frame = cap.read()
         if not ret:
             break
-        small_frame = cv2.resize(frame, (0, 0), fx=0.4, fy=0.4)
+        small_frame = cv2.resize(frame, (0, 0), fx=0.6, fy=0.6)
         detected_faces = detector.detect_faces(small_frame)
         face_found = len(detected_faces)
         if face_found == 1:

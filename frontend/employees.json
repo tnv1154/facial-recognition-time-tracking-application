@@ -1,28 +1,28 @@
 [
     {
-        "id_employee": 1,
+        "id_employee": "1",
         "name": "Nguyễn Việt Thắng",
-        "date_of_birth": "2004-05-11",
-        "phonenumber": "0900000001",
-        "email": "user1@example.com",
-        "address": "Dia chi 1",
         "department": "Nhân sự",
-        "gender": "Nam",
         "position": "Trưởng nhóm",
-        "status": "Inactive",
-        "cccd": "012345670001"
+        "cccd": "012345670001",
+        "gender": "Nam",
+        "date_of_birth": "2004-05-11",
+        "email": "user1@example.com",
+        "phonenumber": "0900000001",
+        "address": "Dia chi 1",
+        "status": "Đang làm"
     },
     {
-        "id_employee": 2,
+        "id_employee": "2",
         "name": "Nguyen Van A1",
-        "date_of_birth": "1997-12-14",
-        "phonenumber": "0900000001",
-        "email": "user1@example.com",
-        "address": "Dia chi 1",
         "department": "Nhân sự",
-        "gender": "Nam",
         "position": "Trưởng nhóm",
-        "status": "Inactive",
-        "cccd": "012345670001"
+        "cccd": "012345670001",
+        "gender": "Nam",
+        "date_of_birth": "1997-12-14",
+        "email": "user1@example.com",
+        "phonenumber": "0900000001",
+        "address": "Dia chi 1",
+        "status": "Đang làm"
     }
 ]
