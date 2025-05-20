@@ -5,11 +5,12 @@ import time
 pygame.mixer.init()
 
 # Tải file mp3
-pygame.mixer.music.load("/AI/Voice/Vui_long_nhin_thang.mp3")
+sound = pygame.mixer.Sound("E:/PythonProjectMain/AI/Voice/Vui_long_nhin_thang.mp3")
 
 # Phát nhạc
-pygame.mixer.music.play()
+sound.play()
 
 # Đợi đến khi nhạc kết thúc
-while pygame.mixer.music.get_busy():
-    time.sleep(1)
+
+time.sleep(sound.get_length())
+print("Nhạc kết thúc")

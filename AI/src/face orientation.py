@@ -1,11 +1,9 @@
 
-
 import os
 import cv2
 import time
 import numpy as np
 
-from AI.src.add_vietnamese_text import AddVietnameseText
 from mtcnn import MTCNN
 
 class FaceOrientation:
